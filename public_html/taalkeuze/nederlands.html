@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+
+        <script src='../js/nuttig_lib.js'></script>
+        <script>
+            window.onload = function() {
+                var eKnop = document.createElement('button');
+                var eTextNode = document.createTextNode('verander taal');
+                eKnop.appendChild(eTextNode);
+                eKnop.addEventListener('click', function() {
+                    clearTaalSetting();
+                    self.location = "taalkeuze.html";
+                })
+                var eBody = document.getElementsByTagName('body')[0];
+                var ePhrase= document.createElement('div');
+                ePhrase.innerHTML="u spreekt nederlands";
+                eBody.appendChild(ePhrase);
+                eBody.appendChild(eKnop);
+                 var eKnopDelete = document.createElement('button');
+                eKnopDelete.addEventListener('click', function() {
+                    clearTaalSetting()
+                });
+                  var eTextNode = document.createTextNode('delete taal instelling');
+                eKnopDelete.appendChild(eTextNode);
+                eBody.appendChild(eKnopDelete);
+            }
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

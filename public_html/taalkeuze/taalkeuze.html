@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Taalkeuze</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="../js/nuttig_lib.js"></script>
+        <script>
+            var aTalenArray = {"be": 'nederlands', "fr": 'français', "gb": 'english'};
+            window.onload = function() {
+                //check voor cookie of storage en doorverwijzen
+
+                if (localStorage.taal || getCookie("taal")) {
+                    if (localStorage) {
+                        self.location = localStorage.taal + ".html";
+                    }
+                    else {
+                        self.location = getCookie("taal") + ".html";
+                    }
+                }
+                //aanmaken van taalknoppen 
+               // var eBody = document.getElementsByTagName('body')[0];
+                var eBody = document.body;
+                for (i in aTalenArray) {
+                    var eLink = document.createElement('a');
+                    eLink.src = aTalenArray[i] + ".html";
+                    var eButton = document.createElement('button');
+                    var eImg = document.createElement('img');
+                    eImg.src = "../images/" + i + ".png";
+                    eButton.appendChild(eImg);
+                    var eTextNode = document.createTextNode(aTalenArray[i]);
+                    eButton.appendChild(eTextNode);
+                    eLink.appendChild(eButton);
+                    eLink.addEventListener('click', function() {
+                        alert('clicking')
+                        registreerTaalkeuze(this);
+                        self.location = this.href;
+                    });
+                    eBody.appendChild(eLink);
+                }
+                ;
+                var eKnopDelete = document.createElement('button');
+                eKnopDelete.addEventListener('click', function() {
+                    clearTaalSetting()
+                });
+                var eTextNode = document.createTextNode('delete taal instelling');
+                eKnopDelete.appendChild(eTextNode);
+                eBody.appendChild(eKnopDelete);
+            };
+
+
+        </script>
+    </head>
+    <body>
+        <h1>
+            Kies uw taal
+        </h1>
+    </body>
+</html>
