@@ -74,9 +74,15 @@ var huidigJaar = vandaag.getFullYear();
 
 
 
-
 //<editor-fold defaultstate="collapsed" desc="cookiefuncties voor als storage ni ondersteund wordt">
 /************** cookies ****************************/
+/**
+ * 
+ * @param {type} naam
+ * @param {type} waarde
+ * @param {type} dagen
+ * @returns {undefined}
+ */
 function setCookie(naam, waarde, dagen) {
     /*plaatst een cookie
      naam: cookienaam;
@@ -123,12 +129,13 @@ function clearCookie(naam) {
 
 
 function registreerTaalkeuze(e) {
+    
    // alert(e.firstChild.children[0].nextSibling.nodeValue);
     if (localStorage) {
         localStorage.setItem('taal', e.firstChild.children[0].nextSibling.nodeValue, 100);
     }
     else {
-        document.cookie = "taal=" + e.firstChild.children[0].nextSibling.nodeValue, 100 + ";expires=100"
+        document.cookie = "taal=" + e.firstChild.children[0].nextSibling.nodeValue, 100 + ";expires=100";
     }
 }
 function clearTaalSetting() {
